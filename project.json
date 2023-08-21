@@ -1,13 +1,13 @@
 {
-  "name": "fwf-api-animal-poc-dispatcher",
+  "name": "MateiColdea-fwf-api-animal-poc-dispatcher",
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.20.2]",
+    "UiPath.Excel.Activities": "[2.20.0-preview]",
     "UiPath.Mail.Activities": "[1.20.3]",
-    "UiPath.System.Activities": "[23.4.4]",
-    "UiPath.Testing.Activities": "[23.4.1]",
-    "UiPath.UIAutomation.Activities": "[23.4.8]"
+    "UiPath.System.Activities": "[23.4.1-preview]",
+    "UiPath.Testing.Activities": "[23.4.0-preview]",
+    "UiPath.UIAutomation.Activities": "[23.4.1-preview]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -45,42 +45,42 @@
     "fileInfoCollection": [
       {
         "editingStatus": "InProgress",
-        "testCaseId": "a2f554e3-d980-424a-8e4f-b76811ac7bec",
+        "testCaseId": "a4cf928f-4eaa-4163-b299-4935a117c925",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\GetTransactionDataTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "cdbd2448-94fe-454f-a731-571b8fe709b6",
+        "testCaseId": "97f59f3f-a8ca-44d0-858a-f898d37578b6",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "0bf17e90-fbc7-4a0e-97ff-b6d9856ce7df",
+        "testCaseId": "26b48624-3bac-4773-a757-cc2fe4569ed4",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\InitAllSettingsTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "2f88e63b-7b20-4ee4-af7c-79ae6e769741",
+        "testCaseId": "4a066d20-0f00-4f54-825f-02d6250db24d",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\MainTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "b96d9c44-0ca3-461d-bb53-30579b8bf35d",
+        "testCaseId": "c096794a-6406-44f8-aabc-39afbe4d3c07",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\ProcessTestCase.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "a164aa07-24f9-469b-81ef-dd29cd6072b1",
+        "testCaseId": "9c9aa20f-c3ea-4940-835b-62d7d0ecd23e",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
@@ -92,7 +92,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "a10a3c7d-6682-4353-8991-fdb696ea8d76",
+      "uniqueId": "d24ecc47-19a3-4be2-acca-1af8f6990f5a",
       "input": [],
       "output": []
     }
