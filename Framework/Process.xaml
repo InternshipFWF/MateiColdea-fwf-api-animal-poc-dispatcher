@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>558.6666666666666,534.6666666666666</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>558.6666666666666,590.6666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -100,137 +100,81 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process Sequence" sap:VirtualizedContainerService.HintSize="496,470" sap2010:WorkflowViewState.IdRef="Sequence_19">
+  <Sequence DisplayName="Process Sequence" sap:VirtualizedContainerService.HintSize="512,290.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - Process" sap:VirtualizedContainerService.HintSize="434,359.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-      <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="624,2154.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemToAdd" />
-          </Sequence.Variables>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="562,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-          <Assign DisplayName="Assign New Dictionary - Proces" sap:VirtualizedContainerService.HintSize="562,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[QueueItemToAdd]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String,Object)]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <If Condition="[in_TransactionItem(&quot;Animal &quot;).ToString.ToLower.Contains(&quot;dog&quot;) OR in_TransactionItem(&quot;Animal &quot;).ToString.ToLower.Contains(&quot;cat&quot;)]" DisplayName="If right input - Process" sap:VirtualizedContainerService.HintSize="562,1706" sap2010:WorkflowViewState.IdRef="If_5">
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="528,1376" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[in_TransactionItem(&quot;Animal &quot;).toString.Contains(&quot;,&quot;c)]" DisplayName="If is multiple - Process" sap:VirtualizedContainerService.HintSize="486,1288.6666666666667" sap2010:WorkflowViewState.IdRef="If_6">
-                  <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="452,698.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Animal - Process" sap:VirtualizedContainerService.HintSize="410,611.3333333333334" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_TransactionItem(&quot;Animal &quot;).toString.Split(&quot;,&quot;c)]">
-                        <ui:ForEach.Body>
-                          <ActivityAction x:TypeArguments="x:String">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,438.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert To Queue Item for multiple- Process" sap:VirtualizedContainerService.HintSize="334,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="DataLayer\ConvertToQueueItem.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_queueItem">[QueueItemToAdd]</OutArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_animal">[currentText]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_name">[in_TransactionItem("Nume").ToString]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                              <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item for multiple - Process" FolderPath="POC API Animal" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" ItemInformationCollection="[QueueItemToAdd]" Priority="Normal" QueueType="Animal Queue" Reference="[QueueItemToAdd(&quot;Name&quot;).ToString]">
-                                <ui:AddQueueItem.ItemInformation>
-                                  <scg:Dictionary x:TypeArguments="x:String, InArgument" />
-                                </ui:AddQueueItem.ItemInformation>
-                              </ui:AddQueueItem>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ForEach.Body>
-                      </ui:ForEach>
-                    </Sequence>
-                  </If.Then>
-                  <If.Else>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,438.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert to Queue Item for Single - Process" sap:VirtualizedContainerService.HintSize="334,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="DataLayer\ConvertToQueueItem.xaml">
-                        <ui:InvokeWorkflowFile.Arguments>
-                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_queueItem">[QueueItemToAdd]</OutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_animal">[in_TransactionItem("Animal ").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_name">[in_TransactionItem("Nume").ToString]</InArgument>
-                        </ui:InvokeWorkflowFile.Arguments>
-                      </ui:InvokeWorkflowFile>
-                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item for single - Process" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" ItemInformationCollection="[QueueItemToAdd]" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[QueueItemToAdd(&quot;Name&quot;).ToString]">
-                        <ui:AddQueueItem.ItemInformation>
-                          <scg:Dictionary x:TypeArguments="x:String, InArgument" />
-                        </ui:AddQueueItem.ItemInformation>
-                      </ui:AddQueueItem>
-                    </Sequence>
-                  </If.Else>
-                </If>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,178.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Throw DisplayName="Throw - Process" Exception="[New BusinessRuleException(in_TransactionItem(&quot;Animal &quot;).ToString.ToLower)]" sap:VirtualizedContainerService.HintSize="334,91.33333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
-              </Sequence>
-            </If.Else>
-          </If>
-        </Sequence>
-      </TryCatch.Try>
-      <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,186" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
-            </ActivityAction.Argument>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AddStatusInDT - Process" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="DataLayer\AddStatusInDT.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_animalName">[exception.Message]</InArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtOutput">[io_dtOutput]</InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-          </ActivityAction>
-        </Catch>
-      </TryCatch.Catches>
-    </TryCatch>
+    <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="548,1360.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="QueueItemToAdd" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="486,143.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+      <Assign DisplayName="Assign New Dictionary - Proces" sap:VirtualizedContainerService.HintSize="486,84.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[QueueItemToAdd]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String,Object)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[in_TransactionItem(&quot;Animal &quot;).ToString.ToLower.Contains(&quot;dog&quot;) OR in_TransactionItem(&quot;Animal &quot;).ToString.ToLower.Contains(&quot;cat&quot;)]" DisplayName="If right input - Process" sap:VirtualizedContainerService.HintSize="486,850" sap2010:WorkflowViewState.IdRef="If_5">
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="452,698.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Animal - Process" sap:VirtualizedContainerService.HintSize="410,611.3333333333334" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_TransactionItem(&quot;Animal &quot;).toString.Split(&quot;,&quot;c)]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,438.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert To Queue Item - Process" sap:VirtualizedContainerService.HintSize="334,114.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ServiceLayer\ConvertToQueueItem.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_queueItem">[QueueItemToAdd]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_animal">[currentText]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_name">[in_TransactionItem("Nume").ToString]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Process" FolderPath="POC API Animal" sap:VirtualizedContainerService.HintSize="334,196.66666666666666" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" ItemInformationCollection="[QueueItemToAdd]" Priority="Normal" QueueType="Animal Queue" Reference="[QueueItemToAdd(&quot;Name&quot;).ToString]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                      </ui:AddQueueItem.ItemInformation>
+                    </ui:AddQueueItem>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="376,178.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw DisplayName="Throw - Process" Exception="[New BusinessRuleException(in_TransactionItem(&quot;Animal &quot;).ToString.ToLower)]" sap:VirtualizedContainerService.HintSize="334,91.33333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
   </Sequence>
 </Activity>

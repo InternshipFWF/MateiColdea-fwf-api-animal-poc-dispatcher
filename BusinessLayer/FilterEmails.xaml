@@ -3,11 +3,12 @@
     <x:Property Name="in_ApprovedList" Type="InArgument(x:String)" />
     <x:Property Name="in_Emails" Type="InArgument(scg:List(snm:MailMessage))" />
     <x:Property Name="out_Email" Type="OutArgument(snm:MailMessage)" />
+    <x:Property Name="in_BRE1" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>562,1376.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>562,1293.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FilterEmails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -93,9 +94,13 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FilterEmails" sap:VirtualizedContainerService.HintSize="572,1312" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FilterEmails" sap:VirtualizedContainerService.HintSize="572,1228.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Sender" />
       <Variable x:TypeArguments="x:Boolean" Name="EmailApproval" />
@@ -105,7 +110,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Filter Emails" sap:VirtualizedContainerService.HintSize="510,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Filter Messages...&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - Filter Emails" sap:VirtualizedContainerService.HintSize="510,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Filter Messages...&quot;]" />
     <Assign DisplayName="Assign Sender - Filter Emails" sap:VirtualizedContainerService.HintSize="510,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Sender]</OutArgument>
@@ -120,6 +125,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_ApprovedList">[in_ApprovedList]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ApprovalResponse">[EmailApproval]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_BRE1]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Parce Sender info - Filter Emails" sap:VirtualizedContainerService.HintSize="510,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DataLayer\ParceSenderInformation.xaml">
@@ -127,7 +133,7 @@
         <InOutArgument x:TypeArguments="x:String" x:Key="io_Sender">[Sender]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[EmailApproval]" DisplayName="If Approved Email - Filter Emails" sap:VirtualizedContainerService.HintSize="510,629.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[EmailApproval AndAlso  out_Email.Attachments.Any AndAlso out_Email.Attachments(0).Name.Contains(&quot;.xlsx&quot;)]" DisplayName="If Approved Email - Filter Emails" sap:VirtualizedContainerService.HintSize="510,497.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
@@ -146,7 +152,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,304.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -160,7 +166,6 @@
               <InArgument x:TypeArguments="snm:MailMessage">[Nothing]</InArgument>
             </Assign.Value>
           </Assign>
-          <Throw DisplayName="Throw - Filter Emails" Exception="[New BusinessRuleException(&quot;Sender is not accepted&quot;)]" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Else>
     </If>
