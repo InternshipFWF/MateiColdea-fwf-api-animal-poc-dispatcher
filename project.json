@@ -84,6 +84,69 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6a0d2eba-fcc9-4884-987c-4946cf4f4d84",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_SendEmail.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "33b26fc5-cd1d-4b14-bd6b-ced4a90846e3",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_ReadEmails.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "01ef67b6-db7b-4b1b-a971-2d5f8a6af074",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_FilterEmails.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "18e1f52c-9d00-41dd-a774-d897c2a4e80f",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_VerifySenderFromList.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "4a9a378f-993b-41cf-a571-d77c65529b5a",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_ParceSenderInformation.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "5e625ab5-9d41-443d-95cd-ca1e8388495c",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_CreateDataTable.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "47a9c418-4890-4c19-9aa9-362398f4d5b9",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_ConvertToQueueItem.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "9ec0d3ce-4e3c-4e0c-a606-24b553e96a08",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_AddStatusInDT.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "872e9d47-d7a5-402c-af4c-37c151947a40",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\TestCase_ProcessEmails.xaml"
       }
     ],
     "modernBehavior": true

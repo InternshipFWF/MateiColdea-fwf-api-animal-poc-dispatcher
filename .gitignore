@@ -3,10 +3,10 @@
 .local
 .objects
 .project
-.screenshots
+.settings
 .templates
 .tmh
-Exception_Screenshots
+Exceptions_Screenshots
 Documentation
 Data/Output
 Data/Temp
