@@ -4,11 +4,12 @@
     <x:Property Name="in_Emails" Type="InArgument(scg:List(snm:MailMessage))" />
     <x:Property Name="out_Email" Type="OutArgument(snm:MailMessage)" />
     <x:Property Name="in_BRE1" Type="InArgument(x:String)" />
+    <x:Property Name="in_BRE2" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>562,1293.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>562,1448.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FilterEmails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -100,10 +101,11 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FilterEmails" sap:VirtualizedContainerService.HintSize="572,1228.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FilterEmails" sap:VirtualizedContainerService.HintSize="572,1384" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Sender" />
       <Variable x:TypeArguments="x:Boolean" Name="EmailApproval" />
+      <Variable x:TypeArguments="x:Boolean" Name="AttachmentApproval" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -133,7 +135,20 @@
         <InOutArgument x:TypeArguments="x:String" x:Key="io_Sender">[Sender]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[EmailApproval AndAlso  out_Email.Attachments.Any AndAlso out_Email.Attachments(0).Name.Contains(&quot;.xlsx&quot;)]" DisplayName="If Approved Email - Filter Emails" sap:VirtualizedContainerService.HintSize="510,497.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Verify Attachement - Filter Emails" sap:VirtualizedContainerService.HintSize="510,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="DataLayer\VerifyAttachement.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_Email">
+          <VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="in_Emails(0)" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_approval">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="AttachmentApproval" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BRE2" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[EmailApproval AndAlso  AttachmentApproval]" DisplayName="If Approved Email - Filter Emails" sap:VirtualizedContainerService.HintSize="510,497.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,172.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
