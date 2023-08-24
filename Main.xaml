@@ -728,9 +728,7 @@
                           <Transition.Action>
                             <ui:Comment DisplayName="Comment (default transition)" sap:VirtualizedContainerService.HintSize="334,76" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Default transition is picked up if there are no errors during initialization" />
                           </Transition.Action>
-                          <Transition.Condition>
-                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException is Nothing AndAlso BusinessException is Nothing" />
-                          </Transition.Condition>
+                          <Transition.Condition>[SystemException is Nothing AndAlso BusinessException is Nothing]</Transition.Condition>
                         </Transition>
                         <Transition DisplayName="System Exception (failed initialization)" sap:VirtualizedContainerService.HintSize="451.3333333333333,1125.3333333333333" sap2010:WorkflowViewState.IdRef="Transition_3">
                           <sap:WorkflowViewStateService.ViewState>
@@ -742,15 +740,15 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,125.33333333333333" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="619.3333333333334,1368.6666666666667" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <Sequence sap:VirtualizedContainerService.HintSize="500.6666666666667,587.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                <Sequence sap:VirtualizedContainerService.HintSize="572.6666666666666,1221.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="438.6666666666667,354.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                  <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="510.6666666666667,988.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -765,7 +763,7 @@
                                       </ui:InvokeWorkflowFile>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="476.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -799,7 +797,7 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <If Condition="[BusinessException IsNot Nothing AndAlso (Config Is Nothing OrElse Convert.ToBoolean(Config(&quot;ShouldMarkJobAsFaulted&quot;)))]" DisplayName="If BusinessException IsNot Nothing" sap:VirtualizedContainerService.HintSize="410,354.6666666666667" sap2010:WorkflowViewState.IdRef="If_15">
+                                        <If Condition="[BusinessException IsNot Nothing]" DisplayName="If BusinessException IsNot Nothing" sap:VirtualizedContainerService.HintSize="410,354.6666666666667" sap2010:WorkflowViewState.IdRef="If_15">
                                           <If.Then>
                                             <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="376,202.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_37">
                                               <sap:WorkflowViewStateService.ViewState>
@@ -831,7 +829,7 @@
                                       </Sequence>
                                     </TryCatch.Finally>
                                   </TryCatch>
-                                  <ui:DeleteFileX DisplayName="Delete Atachments file - End Process" sap:VirtualizedContainerService.HintSize="438.6666666666667,82" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[Config(&quot;FilePath&quot;).ToString]" />
+                                  <ui:DeleteFileX DisplayName="Delete Atachments file - End Process" sap:VirtualizedContainerService.HintSize="510.6666666666667,82" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[Config(&quot;FilePath&quot;).ToString]" />
                                 </Sequence>
                               </State.Entry>
                               <sap:WorkflowViewStateService.ViewState>

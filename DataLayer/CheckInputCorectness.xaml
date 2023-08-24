@@ -96,7 +96,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[not animal.ToString.ToLower.Contains(&quot;dog&quot;) OR not animal.ToString.ToLower.Contains(&quot;cat&quot;)]" DisplayName="If animal not cat or dog - Check Corectness" sap:VirtualizedContainerService.HintSize="410,331.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not animal.ToString.ToLower.Contains(&quot;dog&quot;) And Not animal.ToString.ToLower.Contains(&quot;cat&quot;)]" DisplayName="If animal not cat or dog - Check Corectness" sap:VirtualizedContainerService.HintSize="410,331.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,179.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
